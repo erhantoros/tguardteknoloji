@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import path from 'path';
 
 export default defineConfig({
   plugins: [
@@ -18,25 +19,30 @@ export default defineConfig({
           {
             src: 'pwa-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'pwa-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
-    })
+            type: 'image/png',
+          },
+        ],
+      },
+    }),
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'), // ✅ `@` artık `src` klasörünü temsil edecek
+    },
+  },
   build: {
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: ['lucide-react', 'framer-motion', 'react-hot-toast']
-        }
-      }
-    }
-  }
+          ui: ['lucide-react', 'framer-motion', 'react-hot-toast'],
+        },
+      },
+    },
+  },
 });

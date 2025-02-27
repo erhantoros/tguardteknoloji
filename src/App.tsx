@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useAuth } from '../../hooks/useAuth';
-import { supabase } from '../../lib/supabase';
+import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/lib/supabase';
 import { LogOut, ShoppingBag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
